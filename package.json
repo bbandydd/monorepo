@@ -4,10 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf dist",
     "copy": "copyfiles -u 1 \"./src/static/favicon.ico\" ./dist",
-    "start": "webpack-dev-server --port 8000 --hot --inline --host 0.0.0.0 --env development",
-    "build": "npm run clean && webpack -p --progress --colors --env production",
+
+    "clean:myapp1": "rimraf myapp1_dist",
+    "start:myapp1": "webpack-dev-server --port 8000 --hot --inline --host 0.0.0.0 --env.mode=development --env.site=myapp1",
+    "build:myapp1": "npm run clean:myapp1 && webpack -p --progress --colors --env.mode=production --env.site=myapp1",
+
+    "clean:myapp2": "rimraf myapp2_dist",
+    "start:myapp2": "webpack-dev-server --port 8001 --hot --inline --host 0.0.0.0 --env.mode=development --env.site=myapp2",
+    "build:myapp2": "npm run clean:myapp2 && webpack -p --progress --colors --env.mode=production --env.site=myapp2",
+
     "i18n:update": "node ./src/locales/__generator__/__genI18nFile.js",
     "icon:update": "cd ./src/static/icons/ && node ./__genIndexFile.js"
   },

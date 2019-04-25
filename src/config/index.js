@@ -2,6 +2,7 @@ import devConfig from './app.dev.config';
 import prodConfig from './app.prod.config';
 
 const getConfiguration = (environment) => {
+  debugger;
   if (environment === 'production') {
     return prodConfig;
   }

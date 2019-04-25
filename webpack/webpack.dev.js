@@ -8,12 +8,12 @@ const modules = require('./config/modules');
 const optimization = require('./config/optimization');
 const plugins = require('./config/plugins');
 
-const config = {
+const config = site => ({
   mode: 'development',
   devtool: 'source-map',
   entry: {
     // 'babel-polyfill', // 解決ie問題
-    bundle: ['babel-polyfill', './src/index.js'],
+    bundle: ['babel-polyfill', `./src/${site}/index.js`],
   },
   output: {
     path: path.resolve(__dirname, '../dist'),
@@ -28,17 +28,17 @@ const config = {
   //   poll: 1000, // Check for changes every second
   //   ignored: /node_modules/
   // },
-};
+});
 
-const newPlugins = {
-  plugins: plugins('src/index.html').plugins, // .concat(new BundleAnalyzerPlugin()),
-};
+const newPlugins = site => ({
+  plugins: plugins(`src/${site}/index.html`).plugins, // .concat(new BundleAnalyzerPlugin()),
+});
 
-module.exports = merge(
-  config,
+module.exports = site => merge(
+  config(site),
   resolve,
   optimization,
   modules(true),
-  newPlugins,
+  newPlugins(site),
   devServer,
 );

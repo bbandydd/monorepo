@@ -7,24 +7,24 @@ const optimization = require('./config/optimization');
 const plugins = require('./config/plugins');
 
 
-const config = {
+const config = site => ({
   mode: 'production',
   entry: {
     // 'babel-polyfill', // 解決ie問題
-    bundle: ['babel-polyfill', './src/index.js'],
+    bundle: ['babel-polyfill', `./src/${site}/index.js`],
   },
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve(__dirname, `../${site}_dist`),
     // url-loader會把檔案路徑指到publicPath下面
     // publicPath: '/static/'  // django 使用
     filename: 'js/[name].[hash].js', // [name] : entry的key
   },
-};
+});
 
-module.exports = merge(
-  config,
+module.exports = site => merge(
+  config(site),
   resolve,
   optimization,
   modules(false),
-  plugins('src/index.html'),
+  plugins(`src/${site}/index.html`),
 );

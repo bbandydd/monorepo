@@ -24,7 +24,7 @@ const options = {
   varFile: path.join(__dirname, '../../src/styles/variables.less'),
   mainLessFile: path.join(__dirname, '../../src/styles/index.less'),
   themeVariables, // js 動態修改 less 會用到這些變數
-  indexFileName: 'index.html',
+  indexFileName: path.join(__dirname, '../../src/myapp1/index.html'),
   generateOnce: false,
   lessUrl: 'static/lib/less.min.js',
 };

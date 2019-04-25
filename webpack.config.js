@@ -3,21 +3,21 @@ const webpackConfigs = require('./webpack');
 
 const defaultConfig = 'development';
 
-module.exports = (configName) => {
+module.exports = (config) => {
   // console.log('[entry]configName--->', configName);
   // 沒有帶--env 就使用預設的
-  const requestedConfig = configName || defaultConfig;
+  const requestedConfig = config.mode || defaultConfig;
 
   let LoadedConfig;
   if (webpackConfigs[requestedConfig] !== undefined) {
     LoadedConfig = webpackConfigs[requestedConfig];
   } else {
     console.warn(`
-      Provided environment "${configName}" was not found.
+      Provided environment "${config.mode}" was not found.
       Please use one of the following ones:
       ${Object.keys(webpackConfigs).join(' ')}
     `);
     LoadedConfig = webpackConfigs[defaultConfig];
   }
-  return LoadedConfig;
+  return LoadedConfig(config.site);
 };
