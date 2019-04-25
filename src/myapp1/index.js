@@ -2,7 +2,7 @@ import 'normalize.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { hot } from 'react-hot-loader';
-import Button from '../components/Button';
+import Button from '~~components/Button';
 
 const App = () => (
   <div>
