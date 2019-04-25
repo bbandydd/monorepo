@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+      "target": "es2017",
+      // 一定要用commonjs，才可以解析省略沒寫的/index.js
+      "module": "commonjs",
+      "experimentalDecorators": true,
+      "baseUrl": "./",
+      "paths": {
+        "~~apis/*": ["src/apis/*"],
+        "~~components/*": ["src/components/*"],
+        "~~components/": ["src/components/index"],
+        "~~atoms/*": ["src/components/atoms/*"],
+        "~~atoms/": ["src/components/atoms/index"],
+        "~~compose/": ["src/components/compose/index"],
+        "~~config/": ["src/config"],
+        "~~locales/*": ["src/locales/*"],
+        "~~modules/*": ["src/modules/*"],
+        "~~static/*": ["src/static/*"],
+        "~~store/": ["src/store"],
+        "~~utils/*": ["src/utils/*"],
+        "~~utils/": ["src/utils/index"],
+        "~~routes/": ["src/routes/index"],
+        "~~constant/*": ["src/constant/index"],
+        "~~validator/*": ["src/validators/index"],
+        "~~styles/": ["src/styles/index"],
+      }
+    },
+    "exclude": ["node_modules", "dist"]
+  }
+  

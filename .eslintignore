@@ -1,0 +1,2 @@
+lib/**/*.js
+src/store/index.js
